@@ -13,11 +13,11 @@ const path = require('path')
 app.use(require('./routers/index.routers'))
 
 // STATIC FILES
-app.use(express.static('../public'))
+app.use(express.static(path.join(__dirname, '../public')))
 // console.log(__dirname)
 
 app.use((req, res) => {
-    res.sendFile('index.html')
+    res.sendFile(path.join(__dirname, 'index.html'));
 })
 
 app.listen(3000, () => {
