@@ -1,10 +1,14 @@
-const numbers = [1,2,3,4,5]
+const http = require('http')
 
-numbers.forEach(number => console.log('\x1b[36m%s\x1b[0m',number*2))
-// console.log('\x1b[36m%s\x1b[0m', 'I am cyan');
-// Semantic versioning: MAJOR.MINOR.PATH
+// req = request -> petición del cliente
+// res = response -> respuesta del servidor
+// cliente = navegador
+const server = http.createServer((req, res) => {
+    console.log('Un cliente se ha conectado')
+    res.writeHead(200, {"Content-Type": "text/html; charset=utf-8"});
+    res.end('La conexión ha sido correcta')
+})
 
-// const chalk = require('chalk')
-import chalk from 'chalk';
-
-console.log(chalk.blue('Hello world!'));
+server.listen(3000, () => {
+    console.log('Servidor a la espera de conexiones')
+})
