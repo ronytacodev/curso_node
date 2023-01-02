@@ -3,11 +3,13 @@
 // cliente = navegador
 
 const express = require('express')
+const {route} = require('./routers/index.routers')
 const app = express()
 
-app.get('/', (req, res) => {
-    res.send('La conexión ha sido muy correcta')
-}) 
+// ROUTES
+// const routes =require('./routers/index.routers')
+// app.use(routes)
+app.use(require('./routers/index.routers'))
 
 app.listen(3000, () => {
     console.log('Servidor a la espera de conexiones')
