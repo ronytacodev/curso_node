@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 const password = 'developer'
 const dbname = 'pokedex'
+
 const uri = `mongodb+srv://root:${password}@cluster0.nt3yocn.mongodb.net/${dbname}?retryWrites=true&w=majority`
 
 // const connextion = () => {
@@ -10,4 +11,7 @@ const uri = `mongodb+srv://root:${password}@cluster0.nt3yocn.mongodb.net/${dbnam
 
 // module.exports = connection
 
-module.exports = () => mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true}) 
+module.exports = () => {
+    mongoose.set('strictQuery',false)
+    mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true}) 
+}
